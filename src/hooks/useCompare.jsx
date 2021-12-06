@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-const useCompare = (setPlanets, allFilterByNumber, allPlanets, deletedFilter) => {
+const useCompare = (setPlanets, allFilterByNumber, allPlanets) => {
   const { filterByNumericValues } = allFilterByNumber;
 
   useEffect(() => {
@@ -21,7 +21,7 @@ const useCompare = (setPlanets, allFilterByNumber, allPlanets, deletedFilter) =>
         setPlanets(filterNumber);
       });
     }
-  }, [filterByNumericValues, deletedFilter]);
+  }, [filterByNumericValues]);
 };
 
 export default useCompare;
