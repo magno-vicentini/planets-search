@@ -1,18 +1,19 @@
 import { useEffect } from 'react';
 
-const useCompare = (setPlanets, allFilterByNumber, planets) => {
+const useCompare = (setPlanets, allFilterByNumber, allPlanets, deletedFilter) => {
   const { filterByNumericValues } = allFilterByNumber;
+  console.log(deletedFilter)
 
   useEffect(() => {
     if (filterByNumericValues.length > 0) {
       filterByNumericValues.forEach(({ comparison, column, value }) => {
-        const filterNumber = planets.filter((planet) => {
+        const filterNumber = allPlanets.filter((planet) => {
           switch (comparison) {
           case 'maior que':
             return Number(planet[column]) > Number(value);
           case 'menor que':
-            return Number(planet[column]) > Number(value);
-          case 'iqual a':
+            return Number(planet[column]) < Number(value);
+          case 'igual a':
             return Number(planet[column]) === Number(value);
           default:
             return true;
@@ -21,7 +22,7 @@ const useCompare = (setPlanets, allFilterByNumber, planets) => {
         setPlanets(filterNumber);
       });
     }
-  }, [filterByNumericValues]);
+  }, [filterByNumericValues, deletedFilter]);
 };
 
 export default useCompare;

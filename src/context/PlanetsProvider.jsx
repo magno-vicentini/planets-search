@@ -2,28 +2,26 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import PlanetsContext from './PlanetsContext';
 import usePlanets from '../hooks/usePlanets';
-import useCompare from '../hooks/useCompare';
 
 function PlanetsProvider({ children }) {
   const [planets, setFilterPlanetName,
-    filterPlanetName, setPlanets] = usePlanets();
+    filterPlanetName, setPlanets, allFilterByNumber,
+    setAllFilterByNumber, deletedFilter, setDeletedFilter] = usePlanets();
 
   const [numberFilter, setNumberFilter] = useState([
     'population', 'orbital_period',
     'diameter', 'rotation_period', 'surface_water',
   ]);
 
-  const [allFilterByNumber, setAllFilterByNumber] = useState({
-    filterByNumericValues: [],
-  });
-
+  const [compareFilter, setCompareFilter]= useState([
+    'maior que', 'igual a', 'menor que'
+  ])
+  
   const [filterByNumber, setFilterByNumber] = useState({
     column: 'population',
     comparison: 'maior que',
     value: 0,
   });
-
-  const [deletedFilter, setDeletedFilter] = useState([]);
 
   function handleFilterName({ target }) {
     const { value } = target;
@@ -67,10 +65,14 @@ function PlanetsProvider({ children }) {
         ...allFilterByNumber.filterByNumericValues.filter((el) => el !== filter),
       ],
     });
+    setNumberFilter([
+      ...numberFilter,
+      filter.column,
+    ])
   }
-  usePlanets(allFilterByNumber, deletedFilter);
+  usePlanets();
 
-  useCompare(setPlanets, allFilterByNumber, planets);
+
 
   const context = {
     planets,
@@ -80,6 +82,8 @@ function PlanetsProvider({ children }) {
     numberFilter,
     deletedFilter,
     restoreFilter,
+    compareFilter,
+    filterByNumber,
   };
   return (
     <PlanetsContext.Provider value={ context }>

@@ -4,12 +4,15 @@ import PlanetsContext from '../context/PlanetsContext';
 export default function FilterPlanet() {
   const { handleFilterName, handleColumnFilter,
     applyFilterNumber, numberFilter,
-    deletedFilter, restoreFilter } = useContext(PlanetsContext);
-  const compareFilter = ['maior que', 'menor que', 'iqual a'];
+    deletedFilter, restoreFilter, compareFilter,
+    filterByNumber } = useContext(PlanetsContext);
 
   return (
     <div>
-      <input type="text" onChange={ handleFilterName } />
+      <input 
+      data-testid="name-filter"
+      type="text" 
+      onChange={ handleFilterName } />
       <form
         onSubmit={ (e) => {
           e.preventDefault();
@@ -35,8 +38,9 @@ export default function FilterPlanet() {
           }
         </select>
         <input
-          type="text"
+          type="number"
           name="value"
+          value={ filterByNumber.value }
           data-testid="value-filter"
           onChange={ handleColumnFilter }
         />
@@ -50,10 +54,13 @@ export default function FilterPlanet() {
       </form>
       {
         deletedFilter && deletedFilter.map((filter) => (
-          <label htmlFor="'deleted-filter'" key={ filter.column }>
+          <label 
+            htmlFor="'deleted-filter'" 
+            key={ filter.column }
+            data-testid='filter'
+          >
             {`${filter.column} ${filter.comparison} ${filter.value}` }
             <button
-              data-testid="filter"
               type="button"
               id="deleted-filter"
               onClick={ () => restoreFilter(filter) }
