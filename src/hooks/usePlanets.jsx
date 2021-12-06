@@ -3,7 +3,7 @@ import useCompare from './useCompare';
 
 const usePlanets = () => {
   const [planets, setPlanets] = useState([]);
-  const [allPlanets, setAllPlanets] = useState([])
+  const [allPlanets, setAllPlanets] = useState([]);
   const [filterPlanetName, setFilterPlanetName] = useState({
     filterByName: {
       name: '',
@@ -21,20 +21,17 @@ const usePlanets = () => {
     const fetchPlanets = async () => {
       const { results } = await fetch(URL).then((response) => response.json());
       setAllPlanets(results);
-      setPlanets(results)
+      setPlanets(results);
     };
     fetchPlanets();
   }, []);
 
-  
   useEffect(() => {
     setPlanets(allPlanets
       .filter(({ name }) => name.includes(filterByName.name)));
-    }, [filterByName.name])
-    
-  useCompare(setPlanets, allFilterByNumber, allPlanets);
+  }, [filterByName.name]);
 
-  
+  useCompare(setPlanets, allFilterByNumber, allPlanets);
 
   return [planets, setFilterPlanetName,
     filterPlanetName, setPlanets, allFilterByNumber,

@@ -14,9 +14,8 @@ function PlanetsProvider({ children }) {
     'diameter', 'rotation_period', 'surface_water',
   ]);
 
-  const [compareFilter, setCompareFilter]= useState([
-    'maior que', 'igual a', 'menor que'
-  ])
+  const [compareFilter, setCompareFilter] = useState([
+    'maior que', 'igual a', 'menor que']);
 
   const [filterByNumber, setFilterByNumber] = useState({
     column: 'population',
@@ -57,7 +56,8 @@ function PlanetsProvider({ children }) {
   }
 
   function restoreFilter(filter) {
-    setPlanets(allPlanets)
+    setPlanets(allPlanets);
+
     setDeletedFilter([
       ...deletedFilter.filter((el) => el !== filter),
     ]);
@@ -70,11 +70,9 @@ function PlanetsProvider({ children }) {
     setNumberFilter([
       ...numberFilter,
       filter.column,
-    ])
+    ]);
   }
   usePlanets();
-
-
 
   const context = {
     planets,
@@ -86,6 +84,7 @@ function PlanetsProvider({ children }) {
     restoreFilter,
     compareFilter,
     filterByNumber,
+    setCompareFilter,
   };
   return (
     <PlanetsContext.Provider value={ context }>

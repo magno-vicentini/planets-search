@@ -9,10 +9,11 @@ export default function FilterPlanet() {
 
   return (
     <div>
-      <input 
-      data-testid="name-filter"
-      type="text" 
-      onChange={ handleFilterName } />
+      <input
+        data-testid="name-filter"
+        type="text"
+        onChange={ handleFilterName }
+      />
       <form
         onSubmit={ (e) => {
           e.preventDefault();
@@ -54,10 +55,10 @@ export default function FilterPlanet() {
       </form>
       {
         deletedFilter && deletedFilter.map((filter) => (
-          <label 
-            htmlFor="'deleted-filter'" 
+          <label
+            htmlFor="'deleted-filter'"
             key={ filter.column }
-            data-testid='filter'
+            data-testid="filter"
           >
             {`${filter.column} ${filter.comparison} ${filter.value}` }
             <button
