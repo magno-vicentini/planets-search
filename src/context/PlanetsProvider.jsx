@@ -6,7 +6,8 @@ import usePlanets from '../hooks/usePlanets';
 function PlanetsProvider({ children }) {
   const [planets, setFilterPlanetName,
     filterPlanetName, setPlanets, allFilterByNumber,
-    setAllFilterByNumber, deletedFilter, setDeletedFilter] = usePlanets();
+    setAllFilterByNumber, deletedFilter, setDeletedFilter,
+    allPlanets] = usePlanets();
 
   const [numberFilter, setNumberFilter] = useState([
     'population', 'orbital_period',
@@ -16,7 +17,7 @@ function PlanetsProvider({ children }) {
   const [compareFilter, setCompareFilter]= useState([
     'maior que', 'igual a', 'menor que'
   ])
-  
+
   const [filterByNumber, setFilterByNumber] = useState({
     column: 'population',
     comparison: 'maior que',
@@ -56,6 +57,7 @@ function PlanetsProvider({ children }) {
   }
 
   function restoreFilter(filter) {
+    setPlanets(allPlanets)
     setDeletedFilter([
       ...deletedFilter.filter((el) => el !== filter),
     ]);

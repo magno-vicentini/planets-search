@@ -2,10 +2,9 @@ import { useEffect } from 'react';
 
 const useCompare = (setPlanets, allFilterByNumber, allPlanets, deletedFilter) => {
   const { filterByNumericValues } = allFilterByNumber;
-  console.log(deletedFilter)
 
   useEffect(() => {
-    if (filterByNumericValues.length > 0) {
+    if (filterByNumericValues.length) {
       filterByNumericValues.forEach(({ comparison, column, value }) => {
         const filterNumber = allPlanets.filter((planet) => {
           switch (comparison) {

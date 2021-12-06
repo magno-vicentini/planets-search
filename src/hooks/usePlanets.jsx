@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import useCompare from './useCompare';
-// import useCompare from './useCompare';
 
 const usePlanets = () => {
   const [planets, setPlanets] = useState([]);
@@ -33,13 +32,14 @@ const usePlanets = () => {
       .filter(({ name }) => name.includes(filterByName.name)));
     }, [filterByName.name])
     
-  useCompare(setPlanets, allFilterByNumber, allPlanets, setDeletedFilter);
+  useCompare(setPlanets, allFilterByNumber, allPlanets);
 
   
 
   return [planets, setFilterPlanetName,
-    filterPlanetName, setPlanets, allFilterByNumber
-    , setAllFilterByNumber, deletedFilter, setDeletedFilter];
+    filterPlanetName, setPlanets, allFilterByNumber,
+    setAllFilterByNumber, deletedFilter,
+    setDeletedFilter, allPlanets];
 };
 
 export default usePlanets;
