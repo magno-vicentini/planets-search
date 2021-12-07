@@ -41,10 +41,11 @@ function PlanetsProvider({ children }) {
 
   useCompare(setPlanets, allFilterByNumber, planets);
 
-  const [numberFilter, setNumberFilter] = useState([
+  const filtersColumn = [
     'population', 'orbital_period',
     'diameter', 'rotation_period', 'surface_water',
-  ]);
+  ];
+  const [numberFilter, setNumberFilter] = useState(filtersColumn);
 
   const [filterByNumber, setFilterByNumber] = useState({
     column: 'population',
@@ -60,8 +61,6 @@ function PlanetsProvider({ children }) {
   const [orderFilter, setOrderFilter] = useState({
     order: {},
   });
-
-  const [sortFilter, setSortFilter] = useState(numberFilter);
 
   function handleFilterName({ target }) {
     const { value } = target;
@@ -109,8 +108,6 @@ function PlanetsProvider({ children }) {
       ...orderFilter,
       order: filterByOrder,
     });
-    console.log(planets);
-    console.log(sort);
     if (sort === 'ASC') {
       console.log(column);
       setPlanets(planets.sort((a, b) => a[column] - b[column]));
@@ -163,10 +160,9 @@ function PlanetsProvider({ children }) {
     deletedFilter,
     restoreFilter,
     filterByNumber,
-    sortFilter,
-    setSortFilter,
     handleSortFilter,
     applyFilterOrder,
+    filtersColumn,
   };
   return (
     <PlanetsContext.Provider value={ context }>

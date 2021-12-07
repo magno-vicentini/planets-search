@@ -5,8 +5,9 @@ export default function FilterPlanet() {
   const { handleFilterName, handleColumnFilter,
     applyFilterNumber, numberFilter,
     deletedFilter, restoreFilter,
-    filterByNumber, sortFilter, handleSortFilter,
-    applyFilterOrder } = useContext(PlanetsContext);
+    filterByNumber, handleSortFilter,
+    applyFilterOrder, filtersColumn } = useContext(PlanetsContext);
+
   const compareFilter = ['maior que', 'igual a', 'menor que'];
 
   return (
@@ -86,7 +87,7 @@ export default function FilterPlanet() {
           data-testid="column-sort"
         >
           {
-            sortFilter.map((el) => <option key={ el }>{ el }</option>)
+            filtersColumn.map((el) => <option key={ el }>{ el }</option>)
           }
         </select>
         <label htmlFor="asc-radio">

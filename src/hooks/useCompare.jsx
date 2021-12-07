@@ -21,7 +21,7 @@ const useCompare = (setPlanets, allFilterByNumber, planets) => {
         setPlanets(filterNumber);
       });
     }
-  }, [filterByNumericValues]);
+  }, [allFilterByNumber]);
 };
 
 export default useCompare;
