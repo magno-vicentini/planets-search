@@ -4,8 +4,10 @@ import PlanetsContext from '../context/PlanetsContext';
 export default function FilterPlanet() {
   const { handleFilterName, handleColumnFilter,
     applyFilterNumber, numberFilter,
-    deletedFilter, restoreFilter, compareFilter,
-    filterByNumber } = useContext(PlanetsContext);
+    deletedFilter, restoreFilter,
+    filterByNumber, sortFilter, handleSortFilter,
+    applyFilterOrder } = useContext(PlanetsContext);
+  const compareFilter = ['maior que', 'igual a', 'menor que'];
 
   return (
     <div>
@@ -72,6 +74,45 @@ export default function FilterPlanet() {
           </label>
         ))
       }
+      <form
+        onSubmit={ (e) => {
+          e.preventDefault();
+          applyFilterOrder();
+        } }
+      >
+        <select
+          name="column"
+          onChange={ handleSortFilter }
+          data-testid="column-sort"
+        >
+          {
+            sortFilter.map((el) => <option key={ el }>{ el }</option>)
+          }
+        </select>
+        <label htmlFor="asc-radio">
+          <input
+            type="radio"
+            id="asc-radio"
+            name="sort"
+            value="ASC"
+            onClick={ handleSortFilter }
+            data-testid="column-sort-input-asc"
+          />
+          Ascendente
+        </label>
+        <label htmlFor="desc-radio">
+          <input
+            type="radio"
+            name="sort"
+            id="desc-radio"
+            value="DESC"
+            onClick={ handleSortFilter }
+            data-testid="column-sort-input-desc"
+          />
+          Descendente
+        </label>
+        <button type="submit" data-testid="column-sort-button">Ordenar</button>
+      </form>
     </div>
   );
 }
