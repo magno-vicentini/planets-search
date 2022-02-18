@@ -13,9 +13,11 @@ export default function FilterPlanet() {
 
   return (
     <div className="search-container">
+      <h1>StarWars Search Planets</h1>
       <input
         data-testid="name-filter"
         type="text"
+        placeholder="Search By Name"
         onChange={ handleFilterName }
       />
       <form
