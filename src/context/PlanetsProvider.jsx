@@ -1,15 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import PlanetsContext from './PlanetsContext';
-// import usePlanets from '../hooks/usePlanets';
+
 import useCompare from '../hooks/useCompare';
 
 function PlanetsProvider({ children }) {
-  // const [planets, setFilterPlanetName,
-  //   filterPlanetName, setPlanets, allFilterByNumber,
-  //   setAllFilterByNumber, deletedFilter, setDeletedFilter,
-  //   allPlanets] = usePlanets();
-
   const [planets, setPlanets] = useState([]);
   const [allPlanets, setAllPlanets] = useState([]);
   const [filterPlanetName, setFilterPlanetName] = useState({
@@ -109,7 +104,6 @@ function PlanetsProvider({ children }) {
       order: filterByOrder,
     });
     if (sort === 'ASC') {
-      console.log(column);
       setPlanets(planets.sort((a, b) => a[column] - b[column]));
     }
     if (sort === 'DESC') {
@@ -138,18 +132,6 @@ function PlanetsProvider({ children }) {
       column: numberFilter[0],
     });
   }
-
-  // useEffect(() => {
-  //   const { column, sort } = orderFilter.order;
-  //   console.log(orderFilter.order);
-  //   console.log(planets);
-  //   if (sort === 'ASC') {
-  //     setPlanets(planets.sort((a, b) => a[column] - b[column]));
-  //   }
-  //   if (sort === 'DESC') {
-  //     setPlanets(planets.sort((a, b) => b[column] - a[column]));
-  //   }
-  // }, [orderFilter]);
 
   const context = {
     planets,
