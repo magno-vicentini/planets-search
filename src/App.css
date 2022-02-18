@@ -1,0 +1,6 @@
+body {
+  margin: 0 15px;
+  background-image: url(./images/planets-background.jpeg);
+  filter: grayscale(70%);
+  color: white;
+}

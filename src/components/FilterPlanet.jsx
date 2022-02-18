@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import PlanetsContext from '../context/PlanetsContext';
+import '../styles/FilterPlanet.css';
 
 export default function FilterPlanet() {
   const { handleFilterName, handleColumnFilter,
@@ -11,7 +12,7 @@ export default function FilterPlanet() {
   const compareFilter = ['maior que', 'igual a', 'menor que'];
 
   return (
-    <div>
+    <div className="search-container">
       <input
         data-testid="name-filter"
         type="text"

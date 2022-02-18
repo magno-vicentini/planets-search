@@ -1,0 +1,8 @@
+.table-search td {
+  background-color: black;
+  text-align: center;
+  z-index: 2;
+  color: yellow;
+  border: 2px solid gray;
+  border-radius: 10px;
+}

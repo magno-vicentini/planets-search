@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import PlanetsContext from '../context/PlanetsContext';
+import '../styles/Table.css';
 
 function Table() {
   const { planets } = useContext(PlanetsContext);
@@ -28,7 +29,7 @@ function Table() {
             climate, gravity, terrain, surface_water: surfaceWater,
             orbital_period: orbitalPeriod, population, films, created, edited, url },
         ) => (
-          <tr key={ name }>
+          <tr key={ name } className="table-search">
             <td data-testid="planet-name">{ name }</td>
             <td>{ rotationPeriod }</td>
             <td>{ orbitalPeriod }</td>
