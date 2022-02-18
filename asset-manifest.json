@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/planets-search/static/css/main.0451aaef.chunk.css",
+    "main.js": "/planets-search/static/js/main.aa209d29.chunk.js",
+    "main.js.map": "/planets-search/static/js/main.aa209d29.chunk.js.map",
+    "runtime-main.js": "/planets-search/static/js/runtime-main.a4971208.js",
+    "runtime-main.js.map": "/planets-search/static/js/runtime-main.a4971208.js.map",
+    "static/js/2.0c769cc5.chunk.js": "/planets-search/static/js/2.0c769cc5.chunk.js",
+    "static/js/2.0c769cc5.chunk.js.map": "/planets-search/static/js/2.0c769cc5.chunk.js.map",
+    "index.html": "/planets-search/index.html",
+    "precache-manifest.3703fb3040d0d6ec2632550812b4307b.js": "/planets-search/precache-manifest.3703fb3040d0d6ec2632550812b4307b.js",
+    "service-worker.js": "/planets-search/service-worker.js",
+    "static/css/main.0451aaef.chunk.css.map": "/planets-search/static/css/main.0451aaef.chunk.css.map",
+    "static/js/2.0c769cc5.chunk.js.LICENSE.txt": "/planets-search/static/js/2.0c769cc5.chunk.js.LICENSE.txt",
+    "static/media/App.css": "/planets-search/static/media/planets-background.c14a7b40.jpeg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a4971208.js",
+    "static/js/2.0c769cc5.chunk.js",
+    "static/css/main.0451aaef.chunk.css",
+    "static/js/main.aa209d29.chunk.js"
+  ]
+}
